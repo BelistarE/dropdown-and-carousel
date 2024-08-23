@@ -15,15 +15,18 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|svg|webp)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "images/[name][hash][ext]", // This will output to dist/images/
+        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // Use this if you have a template in `src`
-      title: "My Webpack Project", // This title will be used in the generated HTML
+      template: "./src/index.html",
+      title: "Dropdown and Carousel",
     }),
   ],
   mode: "development",

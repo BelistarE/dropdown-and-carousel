@@ -109,11 +109,12 @@ const main = {
     // Initialize the carousel
     let currentSlide = 0;
     const totalSlides = images.length;
-    const slideInterval = 5000; // 5 seconds
+    const slideInterval = 3000; // 5 seconds
 
     const showSlide = (index) => {
       if (index >= totalSlides) currentSlide = 0;
-      if (index < 0) currentSlide = totalSlides - 1;
+      else if (index < 0) currentSlide = totalSlides - 1;
+      else currentSlide = index;
 
       const offset = -currentSlide * 100;
       carousel.style.transform = `translateX(${offset}%)`;
@@ -137,12 +138,12 @@ const main = {
       updateDots();
     };
 
-    prevButton.addEventListener("click", () => {
-      showSlide(currentSlide - 1);
-    });
-
     nextButton.addEventListener("click", () => {
       showSlide(currentSlide + 1);
+    });
+
+    prevButton.addEventListener("click", () => {
+      showSlide(currentSlide - 1);
     });
 
     createDots();
